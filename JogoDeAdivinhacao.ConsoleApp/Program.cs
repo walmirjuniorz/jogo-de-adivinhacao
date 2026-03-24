@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography;
+﻿using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 
 /*
     v1
@@ -12,18 +14,44 @@
         O sistema informará o usuário se o mesmo acertou ou nao, podendo incluir dicas sobre a proximidade do "chute"
 */
 
-// 2. Nosso jogo deve gerar um número secreto aleatório
-Console.WriteLine("-------------------------------------");
-Console.WriteLine("Jogo de Adivinhaçao");
-Console.WriteLine("-------------------------------------");
-
-Console.WriteLine();
-Console.Write("Digite um número: ");
-string strnumeroDigitado = Console.ReadLine();
-
-// 1 - 20 (numero minimo, numero maximo {exclusivo})
+// 4. nosso jogo deve permitir múltiplas tentativas ao usúario
 int numeroAleatorio = RandomNumberGenerator.GetInt32(1, 21);
 
-Console.WriteLine("O numero aleatório foi: " + numeroAleatorio);
+bool jogoDeveContinuar = true;
 
-Console.ReadLine();
+while (jogoDeveContinuar == true) //false
+{
+    Console.Clear();
+    Console.WriteLine("-------------------------------------");
+    Console.WriteLine("Jogo de Adivinhaçao");
+    Console.WriteLine("-------------------------------------");
+
+    Console.WriteLine();
+    Console.Write("Digite um número: ");
+
+    int numeroDigitado = Convert.ToInt32(Console.ReadLine());
+
+    if (numeroDigitado == numeroAleatorio)
+    {
+        Console.WriteLine("Parabéns! Voce acertou! o número era " + numeroAleatorio);
+    }
+
+    else if (numeroDigitado > numeroAleatorio)
+    {
+        Console.WriteLine("O número digitado foi maior que o número secreto!");
+    }
+
+    else
+    {
+        Console.WriteLine("O número digitado foi menor que o número secreto!");
+    }
+
+    Console.WriteLine();
+    Console.Write("Deseja continuar? (s/N): ");
+    string opcaoContinuar = Console.ReadLine().ToUpper();
+
+    if (opcaoContinuar != "S")
+    {
+        jogoDeveContinuar = false;
+    }
+}
