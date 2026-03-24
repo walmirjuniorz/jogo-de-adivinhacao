@@ -1,4 +1,6 @@
-﻿/*
+﻿using System.Security.Cryptography;
+
+/*
     v1
     Iremos fazer um jogo onde o usuario tera chances de aceertar um numero aleatorio pelo sistema
 
@@ -10,15 +12,18 @@
         O sistema informará o usuário se o mesmo acertou ou nao, podendo incluir dicas sobre a proximidade do "chute"
 */
 
-// 1. Nosso jogo deve aceitar o input do jogador e exibir o valor digitado
+// 2. Nosso jogo deve gerar um número secreto aleatório
 Console.WriteLine("-------------------------------------");
-Console.WriteLine("Jogo de Adivinhacao");
+Console.WriteLine("Jogo de Adivinhaçao");
 Console.WriteLine("-------------------------------------");
 
 Console.WriteLine();
 Console.Write("Digite um número: ");
 string strnumeroDigitado = Console.ReadLine();
 
-Console.WriteLine("O numero digitado foi: " + strnumeroDigitado);
+// 1 - 20 (numero minimo, numero maximo {exclusivo})
+int numeroAleatorio = RandomNumberGenerator.GetInt32(1, 21);
+
+Console.WriteLine("O numero aleatório foi: " + numeroAleatorio);
 
 Console.ReadLine();
