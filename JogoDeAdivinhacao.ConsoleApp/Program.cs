@@ -174,7 +174,7 @@ while (jogoDeveContinuar == true) //false
         Console.WriteLine("-------------------------------------");
         Console.WriteLine("sua pontuaçao é: " + pontuacao);
         Console.Write("Digite ENTER para continuar...");
-        Console.WriteLine("-------------------------------------");
+        Console.WriteLine("\n-------------------------------------");
         Console.ReadLine();
     }
 
